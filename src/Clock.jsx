@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Counter from './Counter.jsx'
 
 class Clock extends Component {
 
@@ -18,7 +19,7 @@ class Clock extends Component {
   }
 
   componentDidMount () {
-    setInterval(() => this.getTimeUntil(this.props.deadline), 1000);
+    // setInterval(() => this.getTimeUntil(this.props.deadline), 1000);
   }
 
   leading0 (num) {
@@ -37,7 +38,10 @@ class Clock extends Component {
   render () {
     return (
       <div>
-        <div className="clock-days"> { this.leading0(this.state.days) } days</div>
+
+        <Counter start={this.leading0(this.state.seconds)} autostart={true} label='seconds' milisecs={1000}/>
+        <Counter start={this.leading0(this.state.seconds)} label='minutes' milisecs={1000}/>
+
         <div className="clock-hours"> { this.leading0(this.state.hours) } hours</div>
         <div className="clock-minutes"> { this.leading0(this.state.minutes) } minutes</div>
         <div className="clock-seconds"> { this.leading0(this.state.seconds) } seconds</div>
